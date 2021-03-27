@@ -1,0 +1,30 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<link href="/css/style.css" rel="stylesheet"/>
+<title>View All Consoles</title>
+</head>
+<body>
+
+<form>
+<table class="styled-table">
+<tr>
+	<th>Item ID</th>
+    <th>Make</th>
+    <th>Model</th>
+    <th>Price</th>
+</tr>
+<tr th:each="currentConsole : ${consoles}">
+	<td th:text="${currentConsole.id}"/>
+	<td th:text="${currentConsole.make}"/>
+	<td th:text="${currentConsole.model}"/>
+	<td th:text="${currentConsole.formatCurrency()}"/>
+	<td><a th:href="@{/edit/{id}(id=${currentConsole.id})}">Edit</a></td>
+	<td><a th:href="@{/delete/{id}(id=${currentConsole.id})}">Delete</a></td>
+</tr>
+</table>
+</form>
+<a href="../inputConsole">Add a new Console</a>
+</body>
+</html>
